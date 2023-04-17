@@ -4,18 +4,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-var uri = 'mongodb://127.0.0.1:27017/songs';
+//var uri = 'mongodb://127.0.0.1:27017/songs';
+console.log(process.env.secret);
+const uri = `mongodb+srv://annie:${process.env.secret}@annie-apiproject-mongod.0i9mrc8.mongodb.net/?retryWrites=true&w=majority`;
+//var uri = 'mongodb://127.0.0.1:27017/songs';
+
 
 mongoose.connect(uri);
 mongoose.set("strictQuery", false);
 
 
 var indexRouter = require('./routes/index')
-var addRouter = require('./routes/add');
-var allsongsRouter = require('./routes/allsongs');
-var deleteRouter = require('./routes/delete')
 var songRouter = require('./routes/song');
-var updateRouter = require('./routes/update');
 
 
 var app = express();

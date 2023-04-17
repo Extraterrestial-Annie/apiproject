@@ -1,7 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var uri = 'mongodb://127.0.0.1:27017/songs';
+//var uri = 'mongodb://127.0.0.1:27017/songs';
+console.log(process.env.secret);
+console.log(process.env.secret);
+const uri = `mongodb+srv://annie:${process.env.secret}@annie-apiproject-mongod.0i9mrc8.mongodb.net/?retryWrites=true&w=majority`;
+//var uri = 'mongodb://127.0.0.1:27017/songs';
+
 var Song = require('../song_model.js');
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
